@@ -1,26 +1,68 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Switch, Route, Link } from 'react-router-dom';
+import { NewsComponent } from './News';
+import { HomeComponent } from './Home';
+import { LinkWrapper, Horizontal } from './Style';
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+} from 'recharts';
 
-function App() {
+function App({ page, allNews }) {
+
+  const data = [];
+  
+  allNews.forEach((news) => {
+    if (news.points)
+      data.push({ id: news.objectID, votes: news.points });
+    else
+      data.push({ id: news.objectID, votes: 0 });
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+    <>
+      <Switch>
+        <Route path="/news" component={NewsComponent} />
+        <Route path="/" component={HomeComponent} />
+      </Switch>
+      <LinkWrapper>
+        {page != 0 ? <Link style={{ color: '#FF6600', textDecoration: 'none', marginRight: '5px' }} to={`/news?page=${page - 1}`}> Previous </Link> : null}
+        {(page > 0 && page < 50) ? <span>|</span> : null}
+        {page != 50 ? <Link style={{ color: '#FF6600', textDecoration: 'none', marginLeft: '5px' }} to={`/news?page=${page + 1}`}> Next </Link> : null}
+      </LinkWrapper>
+      <Horizontal />
+      <ResponsiveContainer width="95%" height={200}>
+        <LineChart
+          data={data}
+          margin={{
+            top: 5, right: 12, left: 20, bottom: 45,
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="id" label={{ value: "ID", fontWeight: "bold", fontSize: 20 }} angle={-90} interval={0} tickMargin={28} />
+          <YAxis dataKey="votes" label={{ value: 'Votes', angle: -90, position: 'insideLeft', fontWeight: "bold", fontSize: 20 }} />
+          <Tooltip />
+          {/* <Legend /> */}
+          <Line type="linear" dataKey="votes" stroke="#8884d8" strokeWidth={2} activeDot={{ r: 6 }} />
+          {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
+        </LineChart>
+      </ResponsiveContainer>
+      <Horizontal />
+    </>
+
+  )
 }
 
-export default App;
+function mapStateToProps(state) {
+  // console.log("State",state);
+  return {
+    allNews: state.hits,
+    page: state.page
+  };
+}
+
+
+export default connect(mapStateToProps)(App);
+
+

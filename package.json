@@ -3,18 +3,56 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "babel-polyfill": "^6.26.0",
+    "connected-react-router": "^6.8.0",
+    "core-js": "^3.6.5",
+    "express": "^4.17.1",
+    "ignore-styles": "^5.0.1",
+    "isomorphic-fetch": "^2.2.1",
+    "raw-loader": "^4.0.1",
     "react": "^16.13.1",
+    "react-canvas-js": "^1.0.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-redux": "^7.2.1",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "recharts": "^1.8.5",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^4.2.0",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "style-loader": "^1.2.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:ssr": "node server/index.js",
+    "dev:build-server-watch": "webpack --config config/webpack.server.js --watch",
+    "dev:server": "nodemon --watch build --exec \"node build/s-bundle.js\"",
+    "dev:build-client-watch": "webpack --config config/webpack.client.js --watch"
   },
   "eslintConfig": {
     "extends": "react-app"

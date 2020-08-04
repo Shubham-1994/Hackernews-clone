@@ -45,8 +45,8 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "node build/s-bundle.js",
+    "build": "webpack --config config/webpack.client.js & webpack --config config/webpack.server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:ssr": "node server/index.js",

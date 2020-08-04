@@ -11,7 +11,7 @@ import { fetchData } from '../src/utility/helper';
 import { StaticRouter } from 'react-router';
 
 const app = express();
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 //Serve static files
 app.use(express.static('public'));
 

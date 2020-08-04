@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpackNodeExternals = require('webpack-node-externals');
 
 module.exports = {
+  mode:'development',
   target: 'node',  // Server side. Not for client browser
   entry: './server/index.js',
   output : {

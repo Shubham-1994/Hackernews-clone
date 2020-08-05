@@ -9,7 +9,6 @@ export async function fetchVote(dispatch,ids) {
 }
 
 export async function hideNewsRow(dispatch,ids) {
-    console.log("entered action")
     dispatch({ type: 'HIDE_NEWS',payload: ids });
 }
 

@@ -5,7 +5,6 @@ export function NewsReducer(state = {}, action) {
         }
         case 'INCREMENT_VOTE': {
             const idsArray = JSON.parse(window.localStorage.getItem('upvote'));
-            console.log("reducer",idsArray);
             const newState=Object.assign({},state);
             if (idsArray.length != 0) {
                 newState.hits.forEach(news =>  idsArray.forEach(idOb => {
@@ -14,14 +13,7 @@ export function NewsReducer(state = {}, action) {
                     }
                 }))
             }
-            console.log("NewState",newState);
             return Object.assign({},state,{hits: [...newState.hits]});
-            
-            // return Object.assign({}, state, {
-            //     hits: state.hits.map(
-            //         (news) => news.objectID === action.payload ? { ...news, points: window.localStorage.getItem(action.payload) } : news
-            //     )
-            // });
         }
         case 'HIDE_NEWS': {
             const ids = action.payload.split(',');

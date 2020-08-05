@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpackNodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  mode:'development',
+  mode:'production',
   target: 'node',  // Server side. Not for client browser
   entry: './server/index.js',
   output : {
@@ -37,7 +37,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
       __IS_BROWSER__: 'false',
     })

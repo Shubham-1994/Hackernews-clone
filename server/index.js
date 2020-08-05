@@ -11,22 +11,23 @@ import { fetchData } from '../src/utility/helper';
 import { StaticRouter } from 'react-router';
 
 const app = express();
+
 const port = process.env.PORT || 3000;
+
 //Serve static files
 app.use(express.static('public'));
+app.use(express.static('build'));
 
 // This is fired every time the server side receives a request
-app.get('*', handleRender)
+app.get('*', handleRender);
 
 // We are going to fill these out in the sections to follow
 function handleRender(req, res) {
-  // process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   // Query our mock API asynchronously
   fetchData(apiResult => {
     const context={};
-    // console.log("Api result", apiResult);
     // Compile an initial state
-    let preloadedState = { apiResult }
+    let preloadedState = { apiResult };
 
     // Create a new Redux store instance
     const store = createStore(NewsReducer, preloadedState.apiResult, applyMiddleware(thunk));
@@ -41,15 +42,14 @@ function handleRender(req, res) {
           </StyleSheetManager>
         </Provider>
       </StaticRouter>
-    )
+    );
 
     const styles = sheet.getStyleTags();
     // Grab the initial state from our Redux store
     const finalState = store.getState();
-    // console.log("Final State", finalState);
     // Send the rendered page back to the client
     res.set('Cache-Control', 'public, max-age=6000');
-    res.send(renderFullPage(html, styles, finalState))
+    res.send(renderFullPage(html, styles, finalState));
   })
 }
 function renderFullPage(html, styles, finalState) {
@@ -60,6 +60,7 @@ function renderFullPage(html, styles, finalState) {
         <meta charset="UTF-8">
         <meta name="Description" content="Hackernews">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="manifest" href="manifest.json" />
         <title>Hackernews</title>
         ${styles}
       </head>

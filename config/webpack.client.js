@@ -2,15 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/index.js',
   output : {
     filename: 'c-bundle.js',
-    publicPath:'/',
-    path: path.resolve(__dirname, '../public')  
+    path: path.resolve(__dirname, '../build')  
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.css'],
+    extensions: ['.js', '.jsx','.json', '.css'],
   },
   module: {
     rules: [
@@ -35,7 +34,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
       __IS_BROWSER__: 'true',
     }),

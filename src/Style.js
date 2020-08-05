@@ -1,4 +1,26 @@
 import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyles = createGlobalStyle`
+  body {
+    margin: 0;
+  }
+  * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent; /* For some Androids */
+  }
+
+  @import url('https://rsms.me/inter/inter.css');
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+  @supports (font-variation-settings: normal) {
+    html {
+      font-family: 'Inter var', sans-serif;
+    }
+  }
+`;
+
 
 export const TableRow = styled.tr`
 &:nth-child(even){background-color: #dddddd};
@@ -49,4 +71,10 @@ color:#FF6600;
 export const Horizontal=styled.hr`
 background-color:#FF6600;
 height:2px;
+`;
+
+export const HideLink=styled.span`
+margin-left: 8px;
+font-size: 12px;
+cursor:pointer
 `;

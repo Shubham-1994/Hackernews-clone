@@ -1,9 +1,9 @@
-##Approach
+## Approach
 First created a basic boilerplate code with create-react-app.
 Then I implemented server side rendering by creating a express server with the help of Nodejs.
 After that i implemented webpack config for client side and server side to create the bundle. And then start generating react components along with Redux store.
 
-#Stack
+## Stack
 1. ReactJs
 2. Redux
 3. Nodejs
@@ -12,7 +12,7 @@ After that i implemented webpack config for client side and server side to creat
 6. Webpack
 6. Styled components.
 
-Open [https://hackernews-clone-ps.herokuapp.com/](https://hackernews-clone-ps.herokuapp.com/) to view the app in the browser. 
+`Open [https://hackernews-clone-ps.herokuapp.com/](https://hackernews-clone-ps.herokuapp.com/) to view the app in the browser.`
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

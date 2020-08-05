@@ -12,7 +12,7 @@ After that i implemented webpack config for client side and server side to creat
 6. Webpack
 6. Styled components.
 
-`Open [https://hackernews-clone-ps.herokuapp.com/](https://hackernews-clone-ps.herokuapp.com/) to view the app in the browser.`
+Open [https://hackernews-clone-ps.herokuapp.com/](https://hackernews-clone-ps.herokuapp.com/) to view the app in the browser.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
